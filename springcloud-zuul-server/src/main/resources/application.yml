@@ -1,0 +1,28 @@
+server:
+  port: 8700
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8699/eureka
+    #健康检查（需要spring-boot-starter-actuator依赖）
+    healthcheck:
+      enabled: true
+  # 续约更新时间间隔（默认30秒）
+  instance:
+    lease-renewal-interval-in-seconds: 10
+    # 续约到期时间（默认90秒）
+    lease-expiration-duration-in-seconds: 10
+
+  #zuul代理配置  zuul.routes.服务名.path,服务名要与注册的一致
+  #应用名映射
+zuul:
+  routes:
+    test:
+      #服务消费者使用的路径名
+      path: /c/d/**
+      #对应消费者请求会将请求映射到该路径
+      url: http://localhost:8702/c/d
+
+spring:
+  application:
+    name: zuul-server
