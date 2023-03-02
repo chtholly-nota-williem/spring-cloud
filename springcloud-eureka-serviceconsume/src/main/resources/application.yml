@@ -6,6 +6,7 @@ eureka:
       defaultZone: http://localhost:8699/eureka,http://localhost:8698/eureka,http://localhost:8697/eureka
   instance:
     hostname: localhost
+
 #当前服务名称
 spring:
   application:
